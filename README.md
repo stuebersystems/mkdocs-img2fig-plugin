@@ -1,6 +1,6 @@
 # MkDocs Img2Fig Plugin
 
-This MkDocs plugin converts markdown encoded images like
+This [MkDocs](https://www.mkdocs.org) plugin converts markdown encoded images like
 
 ```
 ![An image caption](\assets\images\my-image.png)
