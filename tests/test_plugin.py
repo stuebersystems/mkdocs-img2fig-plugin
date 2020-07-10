@@ -2,6 +2,7 @@ import os
 import shutil
 import logging
 import contextlib
+import pathlib
 from click.testing import CliRunner
 from mkdocs.__main__ import build_command
 
@@ -52,8 +53,8 @@ def setup_clean_mkdocs_folder(mkdocs_yml_path, output_path):
     Returns:
         testproject_path (Path): Path to test project
     """
-
-    testproject_path = output_path / "testproject"
+    output_path = str(output_path)
+    testproject_path = os.path.join(output_path, "testproject")
 
     # Create empty 'testproject' folder
     if os.path.exists(testproject_path):
@@ -66,9 +67,9 @@ def setup_clean_mkdocs_folder(mkdocs_yml_path, output_path):
     # Copy mkdocs.yml file and our test 'docs/'
     shutil.copytree(
         os.path.join(os.path.dirname(mkdocs_yml_path), "docs"),
-        testproject_path / "docs",
+        os.path.join(testproject_path, "docs"),
     )
-    shutil.copyfile(mkdocs_yml_path, testproject_path / "mkdocs.yml")
+    shutil.copyfile(mkdocs_yml_path, os.path.join(testproject_path, "mkdocs.yml"))
 
     return testproject_path
 
@@ -80,8 +81,8 @@ def test_img2fig_output(tmp_path):
     result = build_docs_setup(tmp_proj)
     assert result.exit_code == 0, "'mkdocs build' command failed"
 
-    index_file = tmp_proj / "site/index.html"
-    assert index_file.exists(), "%s does not exist" % index_file
+    index_file = os.path.join(tmp_proj, "site/index.html")
+    assert os.path.exists(index_file), "%s does not exist" % index_file
 
-    contents = index_file.read_text()
+    contents = pathlib.Path(index_file).read_text()
     assert "<figcaption>our image caption</figcaption>" in contents
