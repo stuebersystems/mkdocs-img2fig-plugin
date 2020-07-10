@@ -81,7 +81,7 @@ def test_img2fig_output(tmp_path):
     assert result.exit_code == 0, "'mkdocs build' command failed"
 
     index_file = tmp_proj / "site/index.html"
-    assert index_file.exists(), f"{index_file} does not exist"
+    assert index_file.exists(), "%s does not exist" % index_file
 
     contents = index_file.read_text()
     assert "<figcaption>our image caption</figcaption>" in contents
