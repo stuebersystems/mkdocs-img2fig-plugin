@@ -17,7 +17,7 @@ into
 
 ## Requirements
 
-This package requires Python >=3.7 and MkDocs version 1.0 or higher.  
+This package requires Python >=3.5 and MkDocs version 1.0 or higher.  
 
 ## Installation
 

@@ -1,0 +1,5 @@
+site_name: test img2fig page
+
+plugins:
+    - search
+    - img2fig
