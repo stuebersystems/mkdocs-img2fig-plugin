@@ -2,22 +2,30 @@
 
 This [MkDocs](https://www.mkdocs.org) plugin converts markdown encoded images like
 
-```
-![An image caption](\assets\images\my-image.png)
+```markdown
+![An image caption](../images/my-image.png){align="right" width="20%"}
 ```
 
 into 
 
 ```html
 <figure class="figure-image">
-  <img src="\assets\images\my-image.png" alt="An image caption">
+  <img src="../../images/my-image.png" alt="An image caption" align="left" width="20%" >
   <figcaption>An image caption</figcaption>
 </figure>
 ```
 
+- of course, you could leave out `{align="right" width="20%"}`
+- support attr : https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img
+- unfortunately, `align:center` is not supported. if you want to center image, use
+
+```markdown
+![An image caption](../images/my-image.png){width="20%" style="display:block; margin:0 auto;"}
+```
+
 ## Requirements
 
-This package requires Python >=3.5 and MkDocs version 1.0 or higher.  
+This package requires Python >=3.6 and MkDocs version 1.0 or higher.  
 
 ## Installation
 

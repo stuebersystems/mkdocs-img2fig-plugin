@@ -85,4 +85,8 @@ def test_img2fig_output(tmp_path):
     assert os.path.exists(index_file), "%s does not exist" % index_file
 
     contents = pathlib.Path(index_file).read_text()
+    print(contents)
     assert "<figcaption>our image caption</figcaption>" in contents
+    assert '<img src="../github-octocat.png" alt="attr caption" align="right" width="20%">' in contents
+    
+
