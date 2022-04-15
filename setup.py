@@ -18,7 +18,7 @@ setup(
     author='Antonio Cambule',
     author_email='antonio.cambule@stueber.de',
 	license='MIT',
-	python_requires='>=3.5',
+	python_requires='>=3.6',
     install_requires=[
 		'mkdocs'
 	],
